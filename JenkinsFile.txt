@@ -1,0 +1,34 @@
+#!groovy
+node('master')
+{
+    stage('Git Pull')
+    {
+        try
+        {
+                git 'https://github.com/husaink/HKoserRepo.git'
+                echo '~~~~~Cloning successful~~~~~~~~~~'
+        }
+        catch(e)
+        {       
+            echo '~~~~~~Not able to clone git repo~~~~~~~~~~'
+            throw e
+        }
+    }
+    stage('Maven Test')
+    {
+        try
+        {
+                bat 'mvn verify'
+                echo '~~~~~~Maven Test Successful~~~~~~~'
+        }
+        catch(e)    
+        {
+            echo 'unable to test maven build'
+            currentBuild.result = 'FAILURE'
+            echo '~~~~~~~~~Cleaning maven sources~~~~~~~~~'
+            bat 'mvn clean'
+            echo '~~~~~~~Maven Clean Successful~~~~~~~~~'
+            throw e
+        }
+    }
+}

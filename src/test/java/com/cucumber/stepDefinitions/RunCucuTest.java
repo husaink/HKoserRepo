@@ -10,8 +10,9 @@ import cucumber.api.junit.Cucumber;
         features = "src/test/java/com/cucumber/features",
         glue = "com.cucumber.stepDefinitions",
         plugin = { 
-                    "pretty",
+        			"pretty",
                     "html:target/cucumber",
+                    "json:target/cucumber.json",
                 } 
 
         )

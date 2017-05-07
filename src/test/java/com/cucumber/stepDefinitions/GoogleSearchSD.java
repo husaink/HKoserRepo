@@ -15,12 +15,17 @@ import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 
-public class GoogleSearchSD {
+public class GoogleSearchSD  {
 	
 	private WebDriver driver;
 	GoogleHomePage googleHome ;
 	GoogleSearchPage googleSearch;
 	CucumberHomePage cucuHomePage;
+	
+//	public GoogleSearchSD(WebDriver driver) {
+//		// TODO Auto-generated constructor stub
+//		this.driver = driver ;
+//	}
 	
 	private final String URL = "https://www.google.co.in";
 	@Before

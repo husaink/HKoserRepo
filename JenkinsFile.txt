@@ -6,7 +6,7 @@ node('master')
         try
         {
                 git 'https://github.com/husaink/HKoserRepo.git'
-                echo '~~~~~ Stage : Cloning successful~~~~~~~~~~'
+                echo '~~~~~ Stage Git Pull : Cloning successful~~~~~~~~~~'
         }
         catch(e)
         {       
@@ -19,15 +19,15 @@ node('master')
         try
         {
                 bat 'mvn verify'
-                echo '~~~~~~Stage : Maven Test Successful~~~~~~~'
+                echo '~~~~~~Stage Maven Test: Maven Test Successful~~~~~~~'
         }
         catch(e)    
         {
             echo 'unable to test maven build'
             currentBuild.result = 'FAILURE'
-            echo '~~~~~~~~~Stage : Cleaning maven sources~~~~~~~~~'
+            echo '~~~~~~~~~Stage Exception : Cleaning maven sources~~~~~~~~~'
             bat 'mvn clean'
-            echo '~~~~~~~Stage : Maven Clean Successful~~~~~~~~~'
+            echo '~~~~~~~Stage Exception : Maven Clean Successful~~~~~~~~~'
             throw e
         }
     }

@@ -1,3 +1,4 @@
+# Demo of how cucumber works in conjunction with selenium
 Feature: Google Search
 
 	Scenario: Search cucumber keyword using Google

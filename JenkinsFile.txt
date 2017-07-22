@@ -6,11 +6,11 @@ node('master')
         try
         {
                 git 'https://github.com/husaink/HKoserRepo.git'
-                echo '~~~~~Cloning successful~~~~~~~~~~'
+                echo '~~~~~ Stage : Cloning successful~~~~~~~~~~'
         }
         catch(e)
         {       
-            echo '~~~~~~Not able to clone git repo~~~~~~~~~~'
+            echo '~~~~~~Stage : Not able to clone git repo~~~~~~~~~~'
             throw e
         }
     }
@@ -19,15 +19,15 @@ node('master')
         try
         {
                 bat 'mvn verify'
-                echo '~~~~~~Maven Test Successful~~~~~~~'
+                echo '~~~~~~Stage : Maven Test Successful~~~~~~~'
         }
         catch(e)    
         {
             echo 'unable to test maven build'
             currentBuild.result = 'FAILURE'
-            echo '~~~~~~~~~Cleaning maven sources~~~~~~~~~'
+            echo '~~~~~~~~~Stage : Cleaning maven sources~~~~~~~~~'
             bat 'mvn clean'
-            echo '~~~~~~~Maven Clean Successful~~~~~~~~~'
+            echo '~~~~~~~Stage : Maven Clean Successful~~~~~~~~~'
             throw e
         }
     }
